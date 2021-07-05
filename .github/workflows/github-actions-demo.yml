@@ -6,6 +6,7 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - run: mvn -version
-            - run: ls ${{ github.workspace }}
+            - run: |
+                ls ${{ github.workspace }}
             - run: ${{ github.workspace }}/deploy.sh
             - run: ls ${{ github.workspace }}/target
