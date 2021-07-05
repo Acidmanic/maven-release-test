@@ -1,6 +1,9 @@
 
 name: Release
-on: [release]
+on: 
+    push:
+        tags:
+            - v*
 jobs:
     Deploy_Project:
         runs-on: ubuntu-latest
