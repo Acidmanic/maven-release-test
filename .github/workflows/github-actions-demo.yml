@@ -1,33 +1,18 @@
 
 name: Release
-on:
-  release:
-    types: [created]
+on: 
+  push:
+    tags:
+    - '*'
 jobs:
     Deploy_Project:
         runs-on: ubuntu-latest
         steps: 
-            - run: mvn -version
             - name: Check out repository code
               uses: actions/checkout@v2
-            - run: |
-                ls ${{ github.workspace }}
             - run: ${{ github.workspace }}/deploy.sh
-            - run: ls ${{ github.workspace }}/target
-            - name: Archive Jar
-              uses: actions/upload-artifact@v2
+            - uses: ncipollo/release-action@v1
               with:
-                name: pact-doc
-                path: ${{ github.workspace }}/target/pact-doc.jar
-            - name: Archive runner
-              uses: actions/upload-artifact@v2
-              with:
-                name: pact-doc
-                path: ${{ github.workspace }}/target/run.sh
-            - name: Upload the artifacts
-              uses: skx/github-action-publish-binaries@master
-              env:
-                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                 args: ${{ github.workspace }}/target/pact-doc.jar ${{ github.workspace }}/target/run.sh
+                artifacts: "${{ github.workspace }}/target/pact-doc.jar,${{ github.workspace }}/target/run.sh"
+                token: ${{ secrets.GITHUB_TOKEN }}
               
