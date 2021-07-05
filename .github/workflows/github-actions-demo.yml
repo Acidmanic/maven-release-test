@@ -16,6 +16,5 @@ jobs:
               uses: actions/upload-artifact@v2
               with:
                 name: pact-doc
-                path: 
-                    - ${{ github.workspace }}/target/pact-doc.jar
-                    - ${{ github.workspace }}/target/run.sh
+                path: ${{ github.workspace }}/target/pact-doc.jar ${{ github.workspace }}/target/pact-doc.jar
+              
