@@ -6,6 +6,8 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - run: mvn -version
+            - name: Check out repository code
+              uses: actions/checkout@v2
             - run: |
                 ls ${{ github.workspace }}
             - run: ${{ github.workspace }}/deploy.sh
