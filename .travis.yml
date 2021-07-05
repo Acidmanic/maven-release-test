@@ -2,16 +2,15 @@ language: java
 sudo: false
 install: true
 script:
-    - ant jar
-    - cd dist
-    - zip -r ../binary-package.zip *
-    - cd ..
+    - ./deploy.sh
 deploy:
   provider: releases
   skip-cleanup: true
   api_key: $GITHUB_TOKEN 
   keep-history: true
-  file: $TRAVIS_BUILD_DIR/binary-package.zip
+  file: 
+    - $TRAVIS_BUILD_DIR/pact-doc.jar
+    - $TRAVIS_BUILD_DIR/run.sh
   on:
     branch: master
     tags: true
