@@ -22,4 +22,10 @@ jobs:
               with:
                 name: pact-doc
                 path: ${{ github.workspace }}/target/run.sh
+            - name: Upload the artifacts
+              uses: skx/github-action-publish-binaries@master
+              env:
+                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                 args: ${{ github.workspace }}/target/pact-doc.jar
               
