@@ -1,9 +1,6 @@
 
 name: Release
-on: 
-    push:
-        tags:
-            - v*
+on: [push]
 jobs:
     Deploy_Project:
         runs-on: ubuntu-latest
@@ -15,3 +12,8 @@ jobs:
                 ls ${{ github.workspace }}
             - run: ${{ github.workspace }}/deploy.sh
             - run: ls ${{ github.workspace }}/target
+            - name: Archive Binaries
+              uses: actions/upload-artifact@v2
+              with:
+                name: pact-doc binary
+                path: ${{ github.workspace }}/target/pact-doc.jar
