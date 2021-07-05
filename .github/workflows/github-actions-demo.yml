@@ -17,6 +17,7 @@ jobs:
               with:
                 name: pact-doc
                 path: ${{ github.workspace }}/target/pact-doc.jar
+            - name: pact-doc
               with:
                 name: pact-doc
                 path: ${{ github.workspace }}/target/run.sh
