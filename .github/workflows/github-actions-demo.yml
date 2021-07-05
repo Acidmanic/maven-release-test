@@ -29,5 +29,5 @@ jobs:
               env:
                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                 args: ${{ github.workspace }}/target/pact-doc.jar
+                 args: ${{ github.workspace }}/target/pact-doc.jar ${{ github.workspace }}/target/run.sh
               
