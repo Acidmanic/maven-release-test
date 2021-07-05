@@ -12,12 +12,13 @@ jobs:
                 ls ${{ github.workspace }}
             - run: ${{ github.workspace }}/deploy.sh
             - run: ls ${{ github.workspace }}/target
-            - name: Archive Binaries
+            - name: Archive Jar
               uses: actions/upload-artifact@v2
               with:
                 name: pact-doc
                 path: ${{ github.workspace }}/target/pact-doc.jar
-            - name: pact-doc
+            - name: Archive runner
+              uses: actions/upload-artifact@v2
               with:
                 name: pact-doc
                 path: ${{ github.workspace }}/target/run.sh
